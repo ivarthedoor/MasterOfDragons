@@ -1,5 +1,6 @@
 import json
 import random
+from system_functions import sleep_and_clear
 
 with open('questions.json', 'r', encoding='UTF-8') as file:
     data = json.load(file)
@@ -15,6 +16,7 @@ password = ["_" for i in range(lenght)]
 
 
 def print_data():
+    sleep_and_clear(1)
     print("".join(lifes))
     print(question["description"])
     print(f"użyte litery: {", ".join(wrong_letters)}")
@@ -25,7 +27,9 @@ print(question["description"])
 print(f"użyte litery: {", ".join(wrong_letters)}")
 print(f"nazwa: {"".join(password)}")
 
-while "_" in  password and len(lifes) >= 1:
+
+
+while "_" in  password and len(lifes) > 0:
     user_input = input("Podaj literę: ")
     if len(user_input) > 1:
         print("max 1 litera...")
@@ -47,4 +51,12 @@ while "_" in  password and len(lifes) >= 1:
             wrong_letters.append(user_input)
             lifes.pop()
             print_data()
-        
+
+    if len(lifes) == 0:
+        print(f"Przegrałeś, hasło to {question["answer"]}")
+        sleep_and_clear(5)
+        break
+    if "_" not in password:
+        print("Zgadłeś hasło")
+        sleep_and_clear(5)
+   
