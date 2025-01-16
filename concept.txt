@@ -1,0 +1,13 @@
+Gra bazująca (wstępnie), na wiedzy ogólnej na temat uniwersów fantasy.
+    -Gracz ma 10 żyć
+    -Gracz porusza się liniowo/może wybrać kierunek, w którym się uda(?)
+    -Na swojej drodze, gracz będzie znajdował skrzynki z przedmiotami(?)
+    -Pomiędzy "poziomami"(?), gracz będzie musiał odpowiadać na pytania
+
+
+
+
+*napisanie planszy
+*napisanie żyć
+*dokończenie pytań
+*napisanie skrzyń
