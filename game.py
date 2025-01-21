@@ -20,11 +20,17 @@ class InitializeGame(PlayerData):
         self.choices.initialize_first_choice()
 
         if self.choices.first_dialog_choice == 1:
-            print("STH ABOUT WISDOM")
+            print("You seek wisdom... A wise decision, young one.\nDifficult path lays ahead, first you must prove, you are worthy of my knowledge.")
+            sleep_and_clear(10)
+            print("To prove that, you will have to overcome all challenges I will put on you.")
         elif self.choices.first_dialog_choice == 2:
-            print("POWER DIALOG")
+            print("You seek power... Many have fallen to that temptation.\nYet only few gained enough power to reach the end of the path.")
+            sleep_and_clear(10)
+            print("")
         else:
-            print("STH BOUT KILLING")
+            print("You wish to destroy... There is a dark path ahead.\nAs dark as your soul might mecome if you will continue this path.\nThink wisely, hard task is before you... harder than you can imagine...")
+            sleep_and_clear(10)
+            print("")
 
 # Tworzenie instancji i uruchamianie gry
 run = InitializeGame()

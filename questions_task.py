@@ -1,10 +1,11 @@
-import json
 import random
 from system_functions import sleep_and_clear, read_data
 
 class QuestionsTask:
     def __init__(self):
         self.question = random.choice(read_data())
+        if "answer" not in self.question or "description" not in self.question:
+            raise ValueError("Invalid question format in data.")
         self.lenght = len(self.question["answer"])
         self.lifes = ["\U0001F534", "\U0001F534", "\U0001F7E0", "\U0001F7E0", "\U0001F7E0", "\U0001F7E2", "\U0001F7E2", "\U0001F7E2", "\U0001F7E2", "\U0001F7E2"]
         self.used_letters = []
@@ -12,10 +13,8 @@ class QuestionsTask:
 
     def print_data(self):
         sleep_and_clear(1)
-        print("".join(self.lifes))
-        print(self.question["description"])
-        print(f"Used letters: {", ".join(self.used_letters)}")
-        print(f"Answer: {"".join(self.password)}")
+        print(f"Instruction: ?\n\n{"".join(self.lifes)}\n{self.question["description"]}\nUsed letters: {", ".join(self.used_letters)}\nAnswer: {"".join(self.password)}")
+
 
     def task_loop(self):
         self.print_data()
@@ -28,9 +27,12 @@ class QuestionsTask:
                 print("You used that letter already...")
                 self.lifes.pop()
                 self.print_data()
-            elif not (user_input.isalpha() or user_input == " "):
+            elif not (user_input.isalpha() or user_input == " " or user_input == "?"):
                 print("Letters only...")
                 self.print_data()
+            elif user_input == "?":
+                print("1. Put one letter at once\n2. If your letter is correct it will show on board\n3. All used letters are shown in 'used letters' line\n4. Numbers are not allowed\n5. Be carefull, game distinguishes capitals and spaces\n6. Guess password until your lifes run out")
+                sleep_and_clear(5)
             else:
                 if user_input in self.question["answer"]:
                     for x in range(self.lenght):

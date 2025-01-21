@@ -1,5 +1,6 @@
 class PlayerData:
     def __init__(self):
+        self.health = {"hp": 100}
         self.gender = None
         self.nick = None
         self.races = {1: "Man", 2: "Elf", 3: "Dwarf", 4: "Orc"}
