@@ -1,3 +1,5 @@
+from system_functions import sleep_and_clear
+
 class PlayersChoices:
     def __init__(self):
         self.first_dialog_choice = None
@@ -10,8 +12,10 @@ class PlayersChoices:
                 if choice in choices:
                     return choice
                 print(f"Input only: {', '.join(map(str, choices))}")
+                sleep_and_clear(2)
             except ValueError:
                 print("Invalid input. Please enter a number.")
+                sleep_and_clear(2)
 
     def initialize_first_choice(self):
         self.first_dialog_choice = self.first_d_choice[self.get_choice("1. I seek for wisdom\n2. I seek for power\n3. I'm here to destroy you\n", self.first_d_choice.keys())]
