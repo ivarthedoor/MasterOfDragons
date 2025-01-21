@@ -9,12 +9,12 @@ class Enemy:
 
     def goblin(self):
         self.name = "Goblin"
-        self.health = 25
+        self.health = 10
         self.attack = random.randint(1, 10)
 
     def archer_goblin(self):
         self.name = "Archer goblin"
-        self.health = 30
+        self.health = 20
         self.attack = random.randint(1, 15)
 
     def goblin_mage(self):
