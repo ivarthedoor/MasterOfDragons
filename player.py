@@ -8,6 +8,9 @@ class PlayerData:
         self.type = None
         self.final_player_data = None
 
+    def interface(self):
+        print(f"Hp: {self.health}\nDmg: {self.damage}\n")
+
     def initialize_player(self):
         self.gender = "Male" if self.get_choice("Input your gender:\n1. Male\n2. Female\n", [1, 2]) == 1 else "Female"
         self.nick = input("Give me your name...: ")

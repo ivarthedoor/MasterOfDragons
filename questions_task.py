@@ -53,5 +53,5 @@ class QuestionsTask:
                 print("Correct!")
                 sleep_and_clear(5)
         
-loop = QuestionsTask()
-loop.task_loop()
+# loop = QuestionsTask()
+# loop.task_loop()
