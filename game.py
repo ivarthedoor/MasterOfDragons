@@ -1,6 +1,6 @@
 from player import PlayerData
 from players_choices import PlayersChoices
-from system_functions import sleep_and_clear
+from system_functions import sleep_and_clear, sleep
 
 class InitializeGame(PlayerData):
     def __init__(self):
@@ -29,7 +29,9 @@ class InitializeGame(PlayerData):
         print("You wake up, beeing dragged by leg, by stinking, ugly, little creature.\n \
               You use other leg to kick goblin in the back!\n \
               Right after hit, he drops your leg and falls.\n \
-              In ")
+              In one quick swing of your sword you kill the beast.")
+        sleep(10)
+        #tutaj będzie pierwsze losowanie lootu (czyli w sumie oprócz skrzyń, będzie także coś z pokonanych.)
 
         
 
