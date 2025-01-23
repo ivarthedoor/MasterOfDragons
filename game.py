@@ -42,8 +42,24 @@ class InitializeGame(PlayerData):
         sleep_and_clear(20)
         self.loot.goblin_loot()
         sleep_and_clear(10)
-        self.question.task_loop()
         
 
 run = InitializeGame()
 run.run_the_game()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# self.question.task_loop()
