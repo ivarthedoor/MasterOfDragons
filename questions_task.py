@@ -10,6 +10,8 @@ class QuestionsTask:
         self.lifes = ["\U0001F534", "\U0001F534", "\U0001F7E0", "\U0001F7E0", "\U0001F7E0", "\U0001F7E2", "\U0001F7E2", "\U0001F7E2", "\U0001F7E2", "\U0001F7E2"]
         self.used_letters = []
         self.password = ["_" for i in range(self.lenght)]
+        self.punish_points = 0
+        self.lost = False
 
     def print_data(self):
         sleep_and_clear(1)
@@ -46,6 +48,8 @@ class QuestionsTask:
                     self.print_data()
 
             if len(self.lifes) == 0:
+                self.punish_points = -10
+                self.lost = True
                 print(f"You lost, answer is: {self.question["answer"]}")
                 sleep_and_clear(5)
                 break
