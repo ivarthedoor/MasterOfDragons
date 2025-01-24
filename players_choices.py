@@ -2,7 +2,7 @@ from utils import sleep_and_clear
 
 class PlayersChoices:
     def __init__(self):
-        self.first_d_choice = {1: "Wisdom", 2: "Power", 3: "Kill a dragon"}
+        self.first_choice_dict = {1: "Wisdom", 2: "Power", 3: "Kill a dragon"}
 
     def get_choice(self, prompt, choices):
         while True:
@@ -16,8 +16,8 @@ class PlayersChoices:
                 print("Invalid input. Please enter a number.")
                 sleep_and_clear(2)
 
-    def initialize_first_choice(self):
-        self.first_dialog_choice = self.first_d_choice[self.get_choice("1. I seek for wisdom\n2. I seek for power\n3. I'm here to destroy you\n", self.first_d_choice.keys())]
+    def first_choice(self):
+        self.first_dialog_choice = self.first_choice_dict[self.get_choice("1. I seek for wisdom\n2. I seek for power\n3. I'm here to destroy you\n", self.first_choice_dict.keys())]
         if self.first_dialog_choice == "Wisdom":
             sleep_and_clear(0.1)
             print("Ancalacan: You seek wisdom... A wise decision, young one.\nDifficult path lays ahead, first you must prove, you are worthy of my knowledge.")
