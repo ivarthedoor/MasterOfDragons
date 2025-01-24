@@ -1,15 +1,15 @@
 class PlayerData:
+
+
+
     def __init__(self):
-        self.health = 100
-        self.damage = 10
         self.gender = None
         self.nick = None
         self.races = {1: "Man", 2: "Elf", 3: "Dwarf", 4: "Orc"}
         self.type = None
         self.final_player_data = None
 
-    def interface(self):
-        print(f"Hp: {self.health}\nDmg: {self.damage}\n")
+
 
     def initialize_player(self):
         self.gender = "Male" if self.get_choice("Input your gender:\n1. Male\n2. Female\n", [1, 2]) == 1 else "Female"

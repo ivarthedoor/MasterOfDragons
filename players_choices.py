@@ -1,8 +1,7 @@
-from system_functions import sleep_and_clear
+from utils import sleep_and_clear
 
 class PlayersChoices:
     def __init__(self):
-        # self.first_dialog_choice = None
         self.first_d_choice = {1: "Wisdom", 2: "Power", 3: "Kill a dragon"}
 
     def get_choice(self, prompt, choices):

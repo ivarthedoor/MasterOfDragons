@@ -1,5 +1,5 @@
 import random
-from system_functions import sleep_and_clear, read_data
+from utils import sleep_and_clear, read_data
 
 class QuestionsTask:
     def __init__(self):
