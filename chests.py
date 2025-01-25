@@ -121,14 +121,14 @@ class Chests:
             player_input = input("Do you want to search the chest? (y/n)\n").strip().lower()
             if player_input == "y":
                 self.search_chest()
+                break
             elif player_input == "n":
                 print("You chose not to search the chest. Exiting.")
                 break
             else:
                 print("Invalid input. Please type 'y' or 'n'.")
 
-run = Chests()
-run.run_search_chest()
+
 
 
 

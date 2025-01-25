@@ -1,6 +1,7 @@
 from player import PlayerData
 from players_choices import PlayersChoices
 from questions_task import QuestionsTask
+from chests import Chests
 from loot import BodyLoot
 from utils import sleep_and_clear, sleep
 
@@ -10,15 +11,20 @@ class InitializeGame(PlayerData):
         self.damage = 10
         self.choices = PlayersChoices()
         self.loot = BodyLoot()
+        self.chest = Chests()
         self.question = QuestionsTask()
         # super().__init__()
 
     def interface(self):
         self.health += self.loot.add_health_points_loot
         self.health += self.question.punish_points
+        self.health += self.chest.add_health_points_chest
         self.damage += self.loot.add_damage_points_loot
+        self.damage += self.chest.add_damage_points_chest
         self.loot.add_health_points_loot = 0
         self.loot.add_damage_points_loot = 0
+        self.chest.add_health_points_chest = 0
+        self.chest.add_damage_points_chest = 0
         self.question.punish_points = 0
         print(f"❤️: {self.health}\n🗡️: {self.damage}\n")
 
@@ -146,12 +152,18 @@ class InitializeGame(PlayerData):
         sleep_and_clear(8)
         self.interface()
 
-        # print("")
-        # sleep_and_clear(10)
-        # self.interface()
-        # print("")
-        # sleep_and_clear(10)
-        # self.interface()
+        print("Then u find the chest")
+        sleep_and_clear(10)
+        self.interface()
+
+        self.chest.run_search_chest()
+        sleep_and_clear(1)
+        self.interface()
+
+        print("u jum over the bridge and die")
+        sleep_and_clear(10)
+        self.interface()
+
         # print("")
         # sleep_and_clear(10)
         # self.interface()
