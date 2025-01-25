@@ -1,11 +1,10 @@
-from player import PlayerData
 import random
 from enum import Enum
 from utils import sleep_and_clear
-class BodyLoot():
+class BodyLoot:
     def __init__(self):
-        self.add_damage_points = 0
-        self.add_health_points = 0
+        self.add_health_points_loot = 0
+        self.add_damage_points_loot = 0
 
 
 
@@ -28,65 +27,65 @@ class BodyLoot():
 
     def loot_method(self):
         while True:
-            search = input("Do you want to search the goblin? Ansewar 'y' or 'n'\n")
-            search = search.lower()  # Poprawka: zapewniamy, że input jest małymi literami
+            player_input = input("Do you want to search the goblin? Ansewar 'y' or 'n'\n")
+            player_input = player_input.lower()  # Poprawka: zapewniamy, że input jest małymi literami
 
-            if search == "y":  # Jeśli gracz chce szukać loot'u
+            if player_input == "y":  # Jeśli gracz chce szukać loot'u
                 if self.drawn_event == self.event.crystal:
                     if self.drawn_color == self.colors.green:
-                        self.add_damage_points = 5  # Zwiększamy damage o 5
+                        self.add_damage_points_loot = 5  # Zwiększamy damage o 5
                         print("You find green crystal, your damage is increased by 5 points")
                         return False
 
                     elif self.drawn_color == self.colors.blue:
-                        self.add_damage_points = 10  # Zwiększamy damage o 10
+                        self.add_damage_points_loot = 10  # Zwiększamy damage o 10
                         print("You find blue crystal, your damage is increased by 10 points")
                         return False
 
                     elif self.drawn_color == self.colors.purple:
-                        self.add_damage_points = 20 # Zwiększamy damage o 20
+                        self.add_damage_points_loot = 20 # Zwiększamy damage o 20
                         print("You find purple crystal, your damage is increased by 20 points")
                         return False
 
                     elif self.drawn_color == self.colors.gold:
-                        self.add_damage_points = 50  # Zwiększamy damage o 50
+                        self.add_damage_points_loot = 50  # Zwiększamy damage o 50
                         print("You find gold crystal, your damage is increased by 50 points")
                         return False
 
                 elif self.drawn_event == self.event.potion:
                     if self.drawn_color == self.colors.green:
-                        self.add_health_points = 5  # Zwiększamy punkty życia o 5
+                        self.add_health_points_loot = 5  # Zwiększamy punkty życia o 5
                         print("You find green potion, your health is increased by 5 points")
                         return False
 
                     elif self.drawn_color == self.colors.blue:
-                        self.add_health_points = 10  # Zwiększamy punkty życia o 10
+                        self.add_health_points_loot = 10  # Zwiększamy punkty życia o 10
                         print("You find blue potion, your health is increased by 10 points")
                         return False
 
                     elif self.drawn_color == self.colors.purple:
-                        self.add_health_points = 20  # Zwiększamy punkty życia o 20
+                        self.add_health_points_loot = 20  # Zwiększamy punkty życia o 20
                         print("You find purple potion, your health is increased by 20 points")
                         return False
 
                     elif self.drawn_color == self.colors.gold:
-                        self.add_health_points = 50  # Zwiększamy punkty życia o 50
+                        self.add_health_points_loot = 50  # Zwiększamy punkty życia o 50
                         print("You find gold potion, your health is increased by 50 points")
                         return False
 
                 elif self.drawn_event == self.event.empty:
                     print("Body was empty.")  # Pusty loot
-                    self.add_health_points = 0
-                    self.add_damage_points = 0
+                    self.add_health_points_loot = 0
+                    self.add_damage_points_loot = 0
                     return False
 
-            elif search == "n":  # Gracz nie chce szukać loot'u
-                self.add_health_points = 0
-                self.add_damage_points = 0  
+            elif player_input == "n":  # Gracz nie chce szukać loot'u
+                self.add_health_points_loot = 0
+                self.add_damage_points_loot = 0  
                 return False
             else:  # Niewłaściwa odpowiedź
-                self.add_health_points = 0
-                self.add_damage_points = 0  
+                self.add_health_points_loot = 0
+                self.add_damage_points_loot = 0  
                 print("Invalid input, try again.")
                 sleep_and_clear(3)  # Poczekaj chwilę i wyczyść ekran
 

@@ -14,11 +14,11 @@ class InitializeGame(PlayerData):
         # super().__init__()
 
     def interface(self):
-        self.health += self.loot.add_health_points
+        self.health += self.loot.add_health_points_loot
         self.health += self.question.punish_points
-        self.damage += self.loot.add_damage_points
-        self.loot.add_health_points = 0
-        self.loot.add_damage_points = 0
+        self.damage += self.loot.add_damage_points_loot
+        self.loot.add_health_points_loot = 0
+        self.loot.add_damage_points_loot = 0
         self.question.punish_points = 0
         print(f"❤️: {self.health}\n🗡️: {self.damage}\n")
 
@@ -126,7 +126,7 @@ class InitializeGame(PlayerData):
         self.question.task_loop()
         if self.question.lost == True:
             print("You failed to guess. A magical force inflicts pain upon you, and the riddle on the seal changes...")
-            # sleep_and_clear(4)
+            sleep_and_clear(4)
             self.question.lifes = ["\U0001F534", "\U0001F534", "\U0001F7E0", "\U0001F7E0", "\U0001F7E0", "\U0001F7E2", "\U0001F7E2", "\U0001F7E2", "\U0001F7E2", "\U0001F7E2"]
             self.question.password = ["_"] * self.question.lenght  # Reset hasła
             self.question.used_letters = []  # Reset użytych liter
@@ -143,7 +143,7 @@ class InitializeGame(PlayerData):
         self.interface()
 
         print("The stone doors open with a heavy scraping sound. You step onto the bridge, and Dundalion follows behind you.")
-        sleep_and_clear(10)
+        sleep_and_clear(8)
         self.interface()
 
         # print("")
