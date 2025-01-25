@@ -14,7 +14,6 @@ class InitializeGame(PlayerData):
         self.loot = BodyLoot()
         self.chest = Chests()
         self.question = QuestionsTask()
-        # super().__init__()
 
     def interface(self):
         self.health += self.loot.add_health_points_loot
@@ -82,9 +81,9 @@ class InitializeGame(PlayerData):
     # In one quick swing of your sword you kill the beast.")
     #     sleep_and_clear(16)
 
-        self.loot.goblin_loot()
-        sleep_and_clear(1)
-        self.interface()
+        # self.loot.goblin_loot()
+        # sleep_and_clear(1)
+        # self.interface()
 
     #     print("After the fight, you look around. You have no idea where you are or how far you are from the entrance.\n \
     # You find yourself among the ruins of a structure that appears to have been built by an extinct civilization.\n \
@@ -146,7 +145,7 @@ class InitializeGame(PlayerData):
     #     print("You approach the seal and read the riddle:")
     #     sleep_and_clear(4)
     #     self.interface()
-    
+
         self.chest_question()
         sleep_and_clear(1)
         self.interface()
