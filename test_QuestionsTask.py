@@ -4,8 +4,8 @@ from questions_task import QuestionsTask
 @pytest.fixture
 def task():
     task = QuestionsTask()
-    task.question = {"description": "The first letter of the alphabet", "answer": "A"}
-    task.password = ["_"] * len(task.question["answer"])
+    task.question_variable = {"description": "The first letter of the alphabet", "answer": "A"}
+    task.password = ["_"] * len(task.question_variable["answer"])
     return task
 
 def test_correct_guess(task):

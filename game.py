@@ -3,7 +3,8 @@ from players_choices import PlayersChoices
 from questions_task import QuestionsTask
 from chests import Chests
 from loot import BodyLoot
-from utils import sleep_and_clear, sleep
+from utils import sleep_and_clear, read_data
+import random
 
 class InitializeGame(PlayerData):
     def __init__(self):
@@ -28,7 +29,24 @@ class InitializeGame(PlayerData):
         self.question.punish_points = 0
         print(f"❤️: {self.health}\n🗡️: {self.damage}\n")
 
+    def reset_questions_data(self):
+            self.interface()
+            print("You failed to guess. A magical force inflicts pain upon you, and the riddle on the seal changes...")
+            sleep_and_clear(4)
+            self.question.question_variable = random.choice(read_data())
+            if "answer" not in self.question.question_variable or "description" not in self.question.question_variable:
+                raise ValueError("Invalid question format in data.")
+            self.question.lenght = len(self.question.question_variable["answer"])
+            self.question.lifes = ["🛡️"] * 10
+            self.question.password = ["_"] * self.question.lenght
+            self.question.used_letters = [] 
+            self.question.lost = False
+            self.question.task_loop()
 
+    def chest_question(self):
+        self.question.task_loop()
+        while self.question.lost == True:
+            self.reset_questions_data()
 
     def run_the_game(self):
     #     print(f"    Ancalacan: Welcome Wanderer...\n \
@@ -128,19 +146,8 @@ class InitializeGame(PlayerData):
     #     print("You approach the seal and read the riddle:")
     #     sleep_and_clear(4)
     #     self.interface()
-
-        self.question.task_loop()
-        if self.question.lost == True:
-            print("You failed to guess. A magical force inflicts pain upon you, and the riddle on the seal changes...")
-            sleep_and_clear(4)
-            self.question.lifes = ["\U0001F534", "\U0001F534", "\U0001F7E0", "\U0001F7E0", "\U0001F7E0", "\U0001F7E2", "\U0001F7E2", "\U0001F7E2", "\U0001F7E2", "\U0001F7E2"]
-            self.question.password = ["_"] * self.question.lenght  # Reset hasła
-            self.question.used_letters = []  # Reset użytych liter
-            self.question.lost = False  # Reset statusu przegranej
-            self.question.task_loop()
-        else:
-            pass
-        
+    
+        self.chest_question()
         sleep_and_clear(1)
         self.interface()
 
@@ -152,7 +159,7 @@ class InitializeGame(PlayerData):
         sleep_and_clear(8)
         self.interface()
 
-        print("Then u find the chest")
+        print("test text")
         sleep_and_clear(10)
         self.interface()
 
@@ -160,7 +167,7 @@ class InitializeGame(PlayerData):
         sleep_and_clear(1)
         self.interface()
 
-        print("u jum over the bridge and die")
+        print("next text")
         sleep_and_clear(10)
         self.interface()
 
