@@ -11,7 +11,7 @@ class InitializeGame(PlayerData):
         self.choices = PlayersChoices()
         self.loot = BodyLoot()
         self.question = QuestionsTask()
-        super().__init__()
+        # super().__init__()
 
     def interface(self):
         self.health += self.loot.add_health_points
@@ -125,7 +125,7 @@ class InitializeGame(PlayerData):
 
         self.question.task_loop()
         if self.question.lost == True:
-            print("Nie zgadłeś. Magiczna moc zadaje Ci ból a zagadka na pieczęci zmienia się...")
+            print("You failed to guess. A magical force inflicts pain upon you, and the riddle on the seal changes...")
             # sleep_and_clear(4)
             self.question.lifes = ["\U0001F534", "\U0001F534", "\U0001F7E0", "\U0001F7E0", "\U0001F7E0", "\U0001F7E2", "\U0001F7E2", "\U0001F7E2", "\U0001F7E2", "\U0001F7E2"]
             self.question.password = ["_"] * self.question.lenght  # Reset hasła
@@ -138,13 +138,14 @@ class InitializeGame(PlayerData):
         sleep_and_clear(1)
         self.interface()
 
-        print("")
+        print("grrzzzt...")
+        sleep_and_clear(3)
+        self.interface()
+
+        print("The stone doors open with a heavy scraping sound. You step onto the bridge, and Dundalion follows behind you.")
         sleep_and_clear(10)
         self.interface()
 
-        # print("")
-        # sleep_and_clear(10)
-        # self.interface()
         # print("")
         # sleep_and_clear(10)
         # self.interface()
