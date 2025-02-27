@@ -128,27 +128,6 @@ class Chests:
             else:
                 print("Invalid input. Please type 'y' or 'n'.")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # import random
 
 # green = []
