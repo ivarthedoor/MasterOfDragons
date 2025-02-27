@@ -29,22 +29,22 @@ class InitializeGame(PlayerData):
         print(f"❤️: {self.health}\n🗡️: {self.damage}\n")
 
     def reset_questions_data(self):
-            self.interface()
-            print("You failed to guess. A magical force inflicts pain upon you, and the riddle on the seal changes...")
-            sleep_and_clear(4)
-            self.question.question_variable = random.choice(read_data())
-            if "answer" not in self.question.question_variable or "description" not in self.question.question_variable:
-                raise ValueError("Invalid question format in data.")
-            self.question.lenght = len(self.question.question_variable["answer"])
-            self.question.lifes = ["🛡️"] * 10
-            self.question.password = ["_"] * self.question.lenght
-            self.question.used_letters = [] 
-            self.question.lost = False
-            self.question.task_loop()
+        self.interface()
+        print("You failed to guess. A magical force inflicts pain upon you, and the riddle on the seal changes...")
+        sleep_and_clear(4)
+        self.question.question_variable = random.choice(read_data())
+        if "answer" not in self.question.question_variable or "description" not in self.question.question_variable:
+            raise ValueError("Invalid question format in data.")
+        self.question.lenght = len(self.question.question_variable["answer"])
+        self.question.lifes = ["🛡️"] * 10
+        self.question.password = ["_"] * self.question.lenght
+        self.question.used_letters = []
+        self.question.lost = False
+        self.question.task_loop()
 
     def chest_question(self):
         self.question.task_loop()
-        while self.question.lost == True:
+        while self.question.lost:
             self.reset_questions_data()
 
     def run_the_game(self):
@@ -203,7 +203,7 @@ class InitializeGame(PlayerData):
         # print("")
         # sleep_and_clear(10)
         # self.interface()
-        
+
 
 run = InitializeGame()
 run.run_the_game()
