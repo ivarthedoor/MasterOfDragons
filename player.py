@@ -12,6 +12,8 @@ class PlayerData:
         self.type = self.races[self.get_choice("What's your race?\n1. Man\n2. Elf\n3. Dwarf\n4. Orc\n", self.races.keys())]
         self.final_player_data = {"Gender": self.gender, "Nick": self.name, "Race": self.type}
 
+        print(f"Ancalacan: Welcome {self.name}, the {self.type}\n   what do you seek in my home...")
+
     def get_choice(self, prompt, choices):
         while True:
             try:

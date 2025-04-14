@@ -1,11 +1,13 @@
 from player import PlayerData
 from players_choices import PlayersChoices
 from questions_task import QuestionsTask
+from npc import NpcCharacters
 from enemies import Enemy
 from chests import Chests
 from loot import BodyLoot
 from utils import sleep_and_clear, read_data
 import random
+
 
 class InitializeGame(PlayerData):
     def __init__(self):
@@ -15,6 +17,10 @@ class InitializeGame(PlayerData):
         self.loot = BodyLoot()
         self.chest = Chests()
         self.question = QuestionsTask()
+        self.npc = NpcCharacters()
+        self.ancalacans_dialogue = self.npc.ancalacan()
+        self.narration = self.npc.narrator()
+        self.dundalions_dialogue = self.npc.dundalion()
         self.enemy = Enemy()
         super().__init__()
 
@@ -30,6 +36,11 @@ class InitializeGame(PlayerData):
         self.chest.add_damage_points_chest = 0
         self.question.punish_points = 0
         print(f"❤️: {self.health}\n🗡️: {self.damage}\n")
+
+    def print_interface(self, a, b):
+        print(a)
+        sleep_and_clear(b)
+        self.interface()
 
     def reset_questions_data(self):
         self.interface()
@@ -58,7 +69,8 @@ class InitializeGame(PlayerData):
                 self.enemy.enemy_health -= player_attack
                 if self.enemy.enemy_health < 0:
                     self.enemy.enemy_health = 0
-                print(f"You hit {self.enemy.enemy_name}, with: {player_attack} points\nyour health: {self.health}\n{self.enemy.enemy_name} health: {self.enemy.enemy_health}")
+                print(
+                    f"You hit {self.enemy.enemy_name}, with: {player_attack} points\nyour health: {self.health}\n{self.enemy.enemy_name} health: {self.enemy.enemy_health}")
                 sleep_and_clear(2)
                 if self.health <= 0:
                     print("You died")
@@ -83,187 +95,63 @@ class InitializeGame(PlayerData):
                     return False
 
     def run_the_game(self):
-        print("    Ancalacan: Welcome Wanderer...\n \
-    You shall fear, for I am a ghost of Ancalacan, fear of the east...\n \
-    The greatest of all dragons...\n \
-    You dare to attempt to my temple!\n \
-    Who are you?! And What is your name?!")
-        sleep_and_clear(1)
+        print(self.ancalacans_dialogue[1])
+        sleep_and_clear(3)
         self.initialize_player()
-        sleep_and_clear(1)
-
-        print(f"Ancalacan: Welcome {self.name}, the {self.type}\n   what do you seek in my home...")
+        sleep_and_clear(3)
         self.choices.first_choice()
         self.interface()
 
-        print("You enter through ancient stone door, to an old, ruined hall.\n \
-    walls and roof are full of holes, aeverything is covered in moss. You feel the smell of water and rot.\n \
-    You make few steps inside and right after you enter the room, something hits you from the back!")
-        sleep_and_clear(16)
-        self.interface()
+        self.print_interface(self.narration[1], 16)
 
-        print("...")
-        sleep_and_clear(3)
-        self.interface()
+        self.print_interface("...", 3)
 
-        print("Goblin: ghrghnhthnhmrht")
-        sleep_and_clear(5)
-        self.interface()
+        self.print_interface("Goblin: ghrghnhthnhmrht", 5)
 
-        print("You wake up, beeing dragged by leg, by stinking, ugly, little creature.\n \
-    You use other leg to kick goblin in the back!\n \
-    Right after hit, he drops your leg and falls.\n \
-    In one quick swing of your sword you kill the beast.")
-        sleep_and_clear(16)
+        self.print_interface(self.narration[2], 16)
 
         self.loot.goblin_loot()
         sleep_and_clear(1)
         self.interface()
 
-        print("After the fight, you look around. You have no idea where you are or how far you are from the entrance.\n \
-    You find yourself among the ruins of a structure that appears to have been built by an extinct civilization.\n \
-    The sky is completely black, with no stars in sight, and everything is illuminated by something resembling a violet sun.\n \
-    Here and there, clusters of gray-green grass grow.")
-        sleep_and_clear(16)
-        self.interface()
+        self.print_interface(self.narration[3], 16)
 
-        print("Suddenly, from behind one of the 'buildings,' or what's left of it, you hear a noise approaching.\n \
-    You hide behind a pillar, and peeking out of the corner of your eye,\n \
-    you see a group of goblins with torches moving through the ruins,\n \
-    led by one much larger goblin clad in armor — clearly their leader.")
-        sleep_and_clear(16)
-        self.interface()
+        self.print_interface(self.narration[4], 16)
 
-        print("You wait in hiding until the enemies pass you by.\n \
-    As soon as they move a safe distance away, you step out from behind the pillar.\n \
-    Looking around, you realize you are surrounded by goblins. You must tread very carefully.")
-        sleep_and_clear(14)
-        self.interface()
+        self.print_interface(self.narration[5], 14)
 
-        print("Silently, you sneak through the deserted streets, occasionally avoiding encounters with more goblins,\n \
-    until you reach an old bridge guarded on both sides by towers.\n \
-    As you approach, you notice that the bridge is protected by stone doors,\n \
-    and at their center is a seal glowing red with some kind of inscription on it.")
-        sleep_and_clear(14)
-        self.interface()
+        self.print_interface(self.narration[6], 14)
 
-        print("You approach the door and are just about to touch the seal when suddenly, you hear a voice.")
-        sleep_and_clear(8)
-        self.interface()
+        self.print_interface(self.narration[7], 8)
 
-        print("Dundalion: Wait! don't do this!")
-        sleep_and_clear(3)
-        self.interface()
+        self.print_interface(self.dundalions_dialogue[1], 3)
 
-        print("Startled, you jump back and instinctively draw your sword. You look around, but see no one.")
-        sleep_and_clear(8)
-        self.interface()
+        self.print_interface(self.narration[8], 8)
 
-        print(f"{self.name}: Who's there? Show yourself!")
-        sleep_and_clear(3)
-        self.interface()
+        self.print_interface(f"{self.name}: Who's there? Show yourself!", 3)
 
-        print("Dundalion: Calm down, I won't harm you. My name is Dundalion.\n \
-    Like you, I am trapped here, though I have been for many centuries.")
-        sleep_and_clear(8)
-        self.interface()
+        self.print_interface(self.dundalions_dialogue[2], 8)
 
-        print("A translucent, bright white figure of an elf emerged from the wall.")
-        sleep_and_clear(5)
-        self.interface()
+        self.print_interface(self.narration[9], 5)
 
-        print("Dundalion: This is no ordinary seal... It's protected by a password. \n \
-    You'll only pass if you can guess it. There are many similar doors throughout this labyrinth.")
-        sleep_and_clear(8)
-        self.interface()
+        self.print_interface(self.dundalions_dialogue[3], 8)
 
-        print("You approach the seal and read the riddle:")
-        sleep_and_clear(4)
-        self.interface()
+        self.print_interface(self.narration[10], 4)
 
         self.door_seal_question()
         sleep_and_clear(1)
         self.interface()
 
-        print("grrzzzt...")
-        sleep_and_clear(3)
-        self.interface()
+        self.print_interface("grrzzzt...", 3)
 
-        print("The stone doors open with a heavy scraping sound. You step onto the bridge, and Dundalion follows behind you.")
-        sleep_and_clear(8)
-        self.interface()
+        self.print_interface(self.narration[11], 8)
 
-        print("test text")
-        sleep_and_clear(10)
-        self.interface()
+        self.print_interface("test text text text text text text text text text", 4)
 
         self.chest.run_search_chest()
         sleep_and_clear(1)
         self.interface()
 
-        # print("next text")
-        # sleep_and_clear(10)
-        # self.interface()
-
-        # self.fight_goblin()
-        # sleep_and_clear(1)
-        # self.interface()
-
-        # print("next text")
-        # sleep_and_clear(10)
-        # self.interface()
-
-        # print("")
-        # sleep_and_clear(10)
-        # self.interface()
-        # print("")
-        # sleep_and_clear(10)
-        # self.interface()
-        # print("")
-        # sleep_and_clear(10)
-        # self.interface()
-        # print("")
-        # sleep_and_clear(10)
-        # self.interface()
-        # print("")
-        # sleep_and_clear(10)
-        # self.interface()
-        # print("")
-        # sleep_and_clear(10)
-        # self.interface()
-        # print("")
-        # sleep_and_clear(10)
-        # self.interface()
-        # print("")
-        # sleep_and_clear(10)
-        # self.interface()
-        # print("")
-        # sleep_and_clear(10)
-        # self.interface()
-        # print("")
-        # sleep_and_clear(10)
-        # self.interface()
-        # print("")
-        # sleep_and_clear(10)
-        # self.interface()
-
 
 run = InitializeGame()
 run.run_the_game()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
