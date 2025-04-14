@@ -16,6 +16,7 @@ class InitializeGame(PlayerData):
         self.chest = Chests()
         self.question = QuestionsTask()
         self.enemy = Enemy()
+        super().__init__()
 
     def interface(self):
         self.health += self.loot.add_health_points_loot
@@ -80,14 +81,14 @@ class InitializeGame(PlayerData):
                     print("You killed your enemy")
                     sleep_and_clear(3)
                     return False
- 
+
     def run_the_game(self):
-        print(f"    Ancalacan: Welcome Wanderer...\n \
+        print("    Ancalacan: Welcome Wanderer...\n \
     You shall fear, for I am a ghost of Ancalacan, fear of the east...\n \
     The greatest of all dragons...\n \
     You dare to attempt to my temple!\n \
     Who are you?! And What is your name?!")
-        sleep_and_clear(16)
+        sleep_and_clear(1)
         self.initialize_player()
         sleep_and_clear(1)
 
@@ -200,17 +201,17 @@ class InitializeGame(PlayerData):
         sleep_and_clear(1)
         self.interface()
 
-        print("next text")
-        sleep_and_clear(10)
-        self.interface()
+        # print("next text")
+        # sleep_and_clear(10)
+        # self.interface()
 
-        self.fight_goblin()
-        sleep_and_clear(1)
-        self.interface()
+        # self.fight_goblin()
+        # sleep_and_clear(1)
+        # self.interface()
 
-        print("next text")
-        sleep_and_clear(10)
-        self.interface()
+        # print("next text")
+        # sleep_and_clear(10)
+        # self.interface()
 
         # print("")
         # sleep_and_clear(10)

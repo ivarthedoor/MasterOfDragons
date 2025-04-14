@@ -32,7 +32,7 @@ class PlayersChoices:
             sleep_and_clear(10)
         elif self.first_dialog_choice == "Kill a dragon":
             sleep_and_clear(0.1)
-            print("Ancalacan: You wish to destroy... There is a dark path ahead.\nAs dark as your soul might mecome if you will continue this path.\nThink wisely, hard task is before you... harder than you can imagine...")
+            print("Ancalacan: You wish to destroy... There is a dark path ahead.\nAs dark as your soul might become if you will continue this path.\nThink wisely, hard task is before you... harder than you can imagine...")
             sleep_and_clear(10)
             print("Ancalacan: If you wish to kill me, you will have to reach me first Hahahahahaha!")
             sleep_and_clear(10)
