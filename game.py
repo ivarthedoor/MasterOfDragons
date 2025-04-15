@@ -22,6 +22,8 @@ class InitializeGame(PlayerData):
         self.narration = self.npc.narrator()
         self.dundalions_dialogue = self.npc.dundalion()
         self.enemy = Enemy()
+        self.goblin = self.enemy.goblin()
+        self.first_boss = self.enemy.first_boss()
         super().__init__()
 
     def interface(self):
@@ -35,7 +37,7 @@ class InitializeGame(PlayerData):
         self.chest.add_health_points_chest = 0
         self.chest.add_damage_points_chest = 0
         self.question.punish_points = 0
-        print(f"❤️: {self.health}\n🗡️: {self.damage}\n")
+        print(f"{self.name}\n❤️: {self.health}\n🗡️: {self.damage}\n")
 
     def print_interface(self, a, b):
         print(a)
@@ -66,45 +68,50 @@ class InitializeGame(PlayerData):
         while self.question.lost:
             self.reset_questions_data()
 
-    def fight_goblin(self):
-        self.enemy.goblin()
+    def fight(self, enemy):
         while True:
-            if self.health > 0 and self.enemy.enemy_health > 0:
-                player_attack = random.randint(1, self.damage)
-                self.enemy.enemy_health -= player_attack
-                if self.enemy.enemy_health < 0:
-                    self.enemy.enemy_health = 0
-                print(
-                    f"You hit {self.enemy.enemy_name}, with: {player_attack} points\nyour health: {self.health}\n{self.enemy.enemy_name} health: {self.enemy.enemy_health}")
-                sleep_and_clear(2)
-                if self.health <= 0:
-                    print("You died")
-                    sleep_and_clear(3)
-                    return False
-                elif self.enemy.enemy_health <= 0:
-                    print("You killed your enemy")
-                    sleep_and_clear(3)
-                    return False
-                self.health -= self.enemy.enemy_attack
-                if self.health < 0:
-                    self.health = 0
-                print(f"{self.enemy.enemy_name} hits you with: {self.enemy.enemy_attack} points\nyour health: {self.health}\n{self.enemy.enemy_name} health: {self.enemy.enemy_health}")
-                sleep_and_clear(2)
-                if self.health <= 0:
-                    print("You died")
-                    sleep_and_clear(3)
-                    return False
-                elif self.enemy.enemy_health <= 0:
-                    print("You killed your enemy")
-                    sleep_and_clear(3)
-                    return False
+            if self.health <= 0:
+                self.health = 0
+                print(f"{self.name}\n❤️: {self.health}\n{enemy['name']}\n❤️: {enemy['hp']}\n{enemy['name']} won, you died...")
+                break
+            elif enemy['hp'] <= 0:
+                enemy['hp'] = 0
+                print(f"{self.name}\n❤️: {self.health}\n{enemy['name']}\n❤️: {enemy['hp']}\nYou won, {enemy['name']} died...")
+                break
+            else:
+                player_dmg = random.randint(0, self.damage)
+                enemy_dmg = random.randint(0, enemy['dmg'])
+                if enemy_dmg == 0:
+                    print(f"{enemy['name']} missed you")
+                    sleep_and_clear(1)
+                    continue
+                elif player_dmg == 0:
+                    print(f"You missed {enemy['name']}")
+                    sleep_and_clear(1)
+                    continue
+                else:
+                    print(f"{self.name}\n❤️: {self.health}\n{enemy['name']}\n❤️: {enemy['hp']}")
+                    self.health -= enemy_dmg
+                    print(f"{enemy['name']} hits You with: {enemy_dmg}")
+                    sleep_and_clear(1)
+
+                    print(f"{self.name}\n❤️: {self.health}\n{enemy['name']}\n❤️: {enemy['hp']}")
+                    enemy['hp'] -= player_dmg
+                    print(f"You hit {enemy['name']} with: {player_dmg}")
+                    sleep_and_clear(1)
 
     def run_the_game(self):
+
+
+
+
+
+
         print(self.ancalacans_dialogue[1])
         sleep_and_clear(3)
         self.initialize_player()
         sleep_and_clear(3)
-        self.choices.first_choice()
+        # self.choices.first_choice()
         self.interface()
 
         self.print_interface(self.narration[1], 16)
@@ -114,6 +121,8 @@ class InitializeGame(PlayerData):
         self.print_interface("Goblin: ghrghnhthnhmrht", 5)
 
         self.print_interface(self.narration[2], 16)
+
+        self.fight(self.first_boss)
 
         self.event_and_interface(self.loot.goblin_loot(), 1)
 

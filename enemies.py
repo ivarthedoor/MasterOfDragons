@@ -8,9 +8,12 @@ class Enemy:
         self.enemy_tekst = None
 
     def goblin(self):
-        self.enemy_name = "Goblin"
-        self.enemy_health = 10
-        self.enemy_attack = random.randint(1, 10)
+        enemy_stats = {
+            'name': "Goblin",
+            'hp': 30,
+            'dmg': 10
+        }
+        return enemy_stats
 
     def archer_goblin(self):
         self.enemy_name = "Archer goblin"
@@ -28,11 +31,14 @@ class Enemy:
         self.enemy_attack = random.randint(20, 60)
 
     def first_boss(self):
-        self.enemy_name = "Kharogath"  # secret shadow
-        self.enemy_tekst = "Kharogath: You dare step into the shadows where my dominion reigns?\n \
-              I am Kharogath, the unseen blade, the whisper of death. Your light will falter before my eternal darkness."
-        self.enemy_health = 600
-        self.enemy_attack = random.randint(20, 60)
+        enemy_stats = {
+            'name': "Kharogath",  # secret shadow
+            'tekst': "Kharogath: You dare step into the shadows where my dominion reigns?\n \
+              I am Kharogath, the unseen blade, the whisper of death. Your light will falter before my eternal darkness.",
+            'hp': 600,
+            'dmg': 60
+        }
+        return enemy_stats
 
     def second_boss(self):
         self.enemy_name = "Volrathor"  # the destroyer
