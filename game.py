@@ -101,17 +101,11 @@ class InitializeGame(PlayerData):
                     sleep_and_clear(1)
 
     def run_the_game(self):
-
-
-
-
-
-
         print(self.ancalacans_dialogue[1])
         sleep_and_clear(3)
         self.initialize_player()
         sleep_and_clear(3)
-        # self.choices.first_choice()
+        self.choices.first_choice()
         self.interface()
 
         self.print_interface(self.narration[1], 16)
