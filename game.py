@@ -42,6 +42,11 @@ class InitializeGame(PlayerData):
         sleep_and_clear(b)
         self.interface()
 
+    def event_and_interface(self, a, b):
+        a
+        sleep_and_clear(b)
+        self.interface()
+
     def reset_questions_data(self):
         self.interface()
         print("You failed to guess. A magical force inflicts pain upon you, and the riddle on the seal changes...")
@@ -110,9 +115,7 @@ class InitializeGame(PlayerData):
 
         self.print_interface(self.narration[2], 16)
 
-        self.loot.goblin_loot()
-        sleep_and_clear(1)
-        self.interface()
+        self.event_and_interface(self.loot.goblin_loot(), 1)
 
         self.print_interface(self.narration[3], 16)
 
@@ -138,9 +141,7 @@ class InitializeGame(PlayerData):
 
         self.print_interface(self.narration[10], 4)
 
-        self.door_seal_question()
-        sleep_and_clear(1)
-        self.interface()
+        self.event_and_interface(self.door_seal_question(), 1)
 
         self.print_interface("grrzzzt...", 3)
 
