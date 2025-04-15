@@ -1,12 +1,4 @@
-import random
-
 class Enemy:
-    def __init__(self):
-        self.enemy_name = None
-        self.enemy_health = None
-        self.enemy_attack = None
-        self.enemy_tekst = None
-
     def goblin(self):
         enemy_stats = {
             'name': "Goblin",
@@ -16,19 +8,28 @@ class Enemy:
         return enemy_stats
 
     def archer_goblin(self):
-        self.enemy_name = "Archer goblin"
-        self.enemy_health = 20
-        self.enemy_attack = random.randint(1, 15)
+        enemy_stats = {
+            'name': "Archer Goblin",
+            'hp': 40,
+            'dmg': 15
+        }
+        return enemy_stats
 
     def goblin_mage(self):
-        self.enemy_name = "Goblin Mage"
-        self.enemy_health = 40
-        self.enemy_attack = random.randint(10, 30)
+        enemy_stats = {
+            'name': "Goblin Mage",
+            'hp': 60,
+            'dmg': 25
+        }
+        return enemy_stats
 
     def goblin_warlord(self):
-        self.enemy_name = "Goblin Warlord"
-        self.enemy_health = 55
-        self.enemy_attack = random.randint(20, 60)
+        enemy_stats = {
+            'name': "Goblin Warlord",
+            'hp': 100,
+            'dmg': 35
+        }
+        return enemy_stats
 
     def first_boss(self):
         enemy_stats = {
@@ -41,29 +42,42 @@ class Enemy:
         return enemy_stats
 
     def second_boss(self):
-        self.enemy_name = "Volrathor"  # the destroyer
-        self.enemy_tekst = "Volrathor: I am Volrathor, breaker of worlds! My power knows no bounds, and every swing of my hammer crushes hope itself.\n \
-              Prepare to be obliterated!"
-        self.enemy_health = 800
-        self.enemy_attack = random.randint(30, 80)
+        enemy_stats = {
+            'name': "Volrathor",  # the destroyer
+            'tekst': "Volrathor: I am Volrathor, breaker of worlds! My power knows no bounds, and every swing of my hammer crushes hope itself.\n \
+              Prepare to be obliterated!",
+            'hp': 800,
+            'dmg': 80
+        }
+        return enemy_stats
 
     def third_boss(self):
-        self.enemy_name = "Eryndalys"  # master of ilusion
-        self.enemy_tekst = "Eryndalys: Ah, a brave soul lost in the labyrinth of my making. I am Eryndalys, the weaver of dreams and nightmares.\n \
-              What you see is not what you face... Can you even trust your own eyes?"
-        self.enemy_health = 900
-        self.enemy_attack = random.randint(40, 100)
+        enemy_stats = {
+            'name': "Eryndalys",  # master of ilusion
+            'tekst': "Eryndalys: Ah, a brave soul lost in the labyrinth of my making. I am Eryndalys, the weaver of dreams and nightmares.\n \
+              What you see is not what you face... Can you even trust your own eyes?",
+            'hp': 900,
+            'dmg': 100
+        }
+        return enemy_stats
 
     def fourth_boss(self):
-        self.enemy_name = "Thalrog"  # dragon blood
-        self.enemy_tekst = "Thalrog: Foolish mortal! You face Thalrog, heir to the draconic bloodline!\n \
-              My flames will scorch the very ground beneath you, and my strength will crush your feeble resolve."
-        self.enemy_health = 1000
-        self.enemy_attack = random.randint(50, 110)
+        enemy_stats = {
+            'name': "Thalrog",  # dragon blood
+            'tekst': "Thalrog: Foolish mortal! You face Thalrog, heir to the draconic bloodline!\n \
+              My flames will scorch the very ground beneath you, and my strength will crush your feeble resolve.",
+            'hp': 1000,
+            'dmg': 110
+        }
+        return enemy_stats
 
     def fifth_boss(self):
-        self.enemy_name = "Narvatharna"  # iron breaker
-        self.enemy_tekst = "Narvatharna: Behold Narvatharna, the Iron Breaker! My armor is impenetrable, my will unyielding.\n \
-              No force, mortal or divine, can shatter me. What hope do you cling to?"
-        self.enemy_health = 1100
-        self.enemy_attack = random.randint(100, 200)
+        enemy_stats = {
+            'name': "Narvathanna",  # iron breaker
+            'tekst': "Narvathanna: Behold Narvathanna, the Iron Breaker! My armor is impenetrable, my will unyielding.\n \
+              No force, mortal or divine, can shatter me. What hope do you cling to?",
+            'hp': 1100,
+            'dmg': 200
+        }
+        return enemy_stats
+
