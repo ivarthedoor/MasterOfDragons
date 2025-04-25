@@ -46,6 +46,7 @@ class NpcCharacters:
             9: "A translucent, bright white figure of an elf emerged from the wall.",
             10: "You approach the seal and read the riddle:",
             11: "The stone doors open with a heavy scraping sound. You step onto the bridge, and Dundalion follows behind you.",
+            12: ""
         }
         return dialogues_level1
 
